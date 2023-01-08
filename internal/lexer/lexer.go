@@ -87,6 +87,15 @@ func (l *Lexer) readChar() {
 	l.readPosition += 1
 }
 
+// peekChar looks one character ahead with no lexer positions change.
+func (l *Lexer) peekChar() byte {
+	if l.readPosition >= len(l.input) {
+		return 0
+	} else {
+		return l.input[l.readPosition]
+	}
+}
+
 func (l *Lexer) readIdentifier() string {
 	position := l.position // Save the starting position of an identifier.
 
